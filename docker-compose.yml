@@ -1,0 +1,19 @@
+version: "3.1"
+services:
+  unit-test-engine:
+    hostname: unit-test-engine
+    container_name: unit-test-engine
+    image: there_was_docker_image:latest
+    volumes:
+      - .:/var/www:cached
+    ports:
+      - 80
+    dns:
+      - 0.0.0.0
+    environment:
+      - VIRTUAL_HOST=myCoolLanHost
+
+networks:
+  default:
+    external:
+      name: myCoolNetworkName

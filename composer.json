@@ -1,0 +1,29 @@
+{
+    "name": "Neznajka/unit-test-engine",
+    "description": "just a cool library that will have some useful test traits for unit testing.",
+    "type": "library",
+    "autoload": {
+        "files": [
+            "usefulFunctions.php"
+        ],
+        "psr-4": {
+            "Tests\\Neznajka\\Unit\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\TestsEngine\\": "tests"
+        }
+    },
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0",
+        "ext-dom": "*",
+        "gossi/php-code-generator": "*",
+        "codeception/aspect-mock": "^3.0",
+        "codeception/codeception": "^2.5",
+        "psr/container": "*",
+        "symfony/var-dumper": "*"
+    }
+}
