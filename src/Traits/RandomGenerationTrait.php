@@ -6,16 +6,16 @@
  * Time: 10:54 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits;
+namespace Tests\Neznajka\Codeception\Engine\Traits;
 
-use PHPUnit\Framework\MockObject\MockObject;
+use DateTime;
+use Exception;
 use ReflectionClass;
-use Tests\Neznajka\Unit\Useful\ThrowableMock;
-use Throwable;
+use ReflectionException;
 
 /**
  * Class RandomGenerationTrait
- * @package Tests\Neznajka\Unit\Traits
+ * @package Tests\Neznajka\Codeception\Engine\Traits
  * @method string getWorkingClassNameSpace()
  */
 trait RandomGenerationTrait
@@ -23,7 +23,7 @@ trait RandomGenerationTrait
     /**
      * @param string $className
      * @return ReflectionClass
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function getClass(string $className): ReflectionClass
     {
@@ -96,10 +96,11 @@ trait RandomGenerationTrait
     }
 
     /**
-     * @return Throwable|MockObject
+     * @return DateTime
+     * @throws Exception
      */
-    protected function getThrowable(): Throwable
+    protected function getDateTime(): DateTime
     {
-        return $this->createMock(ThrowableMock::class);
+        return new DateTime('@' . $this->getInt());
     }
 }

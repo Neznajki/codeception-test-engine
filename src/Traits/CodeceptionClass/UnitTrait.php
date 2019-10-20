@@ -6,13 +6,14 @@
  * Time: 11:37 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits\CodeceptionClass;
+namespace Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass;
 
 use Codeception\PHPUnit\TestCase;
+use Tests\Neznajka\Codeception\Engine\Traits\PhpUnitClass\TestCaseTrait;
 
 /**
  * Class TestCaseTrait
- * @package Tests\Neznajka\Unit\Traits\CodeceptionClass
+ * @package Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass
  * @uses TestCase
  *
  * @method getMetadata()
@@ -29,5 +30,5 @@ use Codeception\PHPUnit\TestCase;
  */
 trait UnitTrait
 {
-    use \Tests\Neznajka\Unit\Traits\PhpUnitClass\TestCaseTrait;
+    use TestCaseTrait;
 }

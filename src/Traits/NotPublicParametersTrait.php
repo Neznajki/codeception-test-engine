@@ -6,11 +6,13 @@
  * Time: 10:21 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits;
+namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 
+use InvalidArgumentException;
 use ReflectionClass;
-use Tests\Neznajka\Unit\Traits\CodeceptionClass\UnitTrait;
+use ReflectionException;
+use Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass\UnitTrait;
 
 trait NotPublicParametersTrait
 {
@@ -20,8 +22,8 @@ trait NotPublicParametersTrait
      * @param object $object
      * @param string $property
      * @return mixed
-     * @throws \InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     protected function getNotPublicValue($object, string $property)
     {
@@ -39,15 +41,15 @@ trait NotPublicParametersTrait
             return $staticProperties[$property];
         }
 
-        throw new \InvalidArgumentException("property with name {$property} does not exists in class {$reflection->getName()}");
+        throw new InvalidArgumentException("property with name {$property} does not exists in class {$reflection->getName()}");
     }
 
     /**
      * @param object $object
      * @param string $property
      * @param mixed $value
-     * @throws \InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     protected function setNotPublicValue($object, string $property, $value)
     {
@@ -62,6 +64,6 @@ trait NotPublicParametersTrait
         }
 
         $message = "property with name {$property} does not exists in class {$reflection->getName()}, static unsupported";
-        throw new \InvalidArgumentException($message);
+        throw new InvalidArgumentException($message);
     }
 }

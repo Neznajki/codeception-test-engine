@@ -7,17 +7,14 @@
  * Time: 11:21 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits\PhpUnitClass;
+namespace Tests\Neznajka\Codeception\Engine\Traits\PhpUnitClass;
 
 
-use PHPUnit\Framework\MockObject\Matcher\AnyInvokedCount as AnyInvokedCountMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtIndex as InvokedAtIndexMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtLeastCount as InvokedAtLeastCountMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtLeastOnce as InvokedAtLeastOnceMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtMostCount as InvokedAtMostCountMatcher;
-use PHPUnit\Framework\MockObject\Matcher\InvokedCount as InvokedCountMatcher;
+use Exception;
 use PHPUnit\Framework\MockObject\MockBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount as AnyInvokedCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls as ConsecutiveCallsStub;
 use PHPUnit\Framework\MockObject\Stub\Exception as ExceptionStub;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument as ReturnArgumentStub;
@@ -32,7 +29,7 @@ use Throwable;
 
 /**
  * Class TestCaseTrait
- * @package Tests\Neznajka\Unit\Traits\CodeceptionClass
+ * @package Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass
  * @uses TestCase
  *
  *    
@@ -44,11 +41,11 @@ use Throwable;
  * @property $preserveGlobalState;
  *
  * @method AnyInvokedCountMatcher any()
- * @method InvokedCountMatcher never()
+ * @method InvocationOrder never()
  * @method InvokedAtLeastCountMatcher atLeast(int $requiredInvocations)
  * @method InvokedAtLeastOnceMatcher atLeastOnce()
- * @method InvokedCountMatcher once()
- * @method InvokedCountMatcher exactly(int $count)
+ * @method InvocationOrder once()
+ * @method InvocationOrder exactly(int $count)
  * @method InvokedAtMostCountMatcher atMost(int $allowedInvocations)
  * @method InvokedAtIndexMatcher at(int $index)
  * @method ReturnStub returnValue($value)
@@ -88,7 +85,7 @@ use Throwable;
  * @method expectExceptionCode($code);
  * @method expectExceptionMessage(string $message);
  * @method expectExceptionMessageRegExp(string $messageRegExp);
- * @method expectExceptionObject(\Exception $exception);
+ * @method expectExceptionObject(Exception $exception);
  * @method expectNotToPerformAssertions();
  * @method setRegisterMockObjectsFromTestArgumentsRecursively(bool $flag);
  * @method setUseErrorHandler(bool $useErrorHandler);

@@ -6,22 +6,22 @@
  * Time: 2:16 PM
  */
 
-namespace Tests\Neznajka\Unit\Traits;
+namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 use Exception;
 use SplObjectStorage;
-use Tests\Neznajka\Unit\Contract\ExpectsSelfMethodCallInterface;
-use Tests\Neznajka\Unit\Contract\HaveParametersInterface;
-use Tests\Neznajka\Unit\Contract\QuestionInterface;
-use Tests\Neznajka\Unit\Objects\Logical\ConsecutiveCalls;
-use Tests\Neznajka\Unit\Objects\Mockery\MockeryGetterObject;
-use Tests\Neznajka\Unit\Contract\QuestionableInterface;
-use Tests\Neznajka\Unit\Objects\Questions\AskSelfUsingMethod;
-use Tests\Neznajka\Unit\Traits\CodeceptionClass\UnitTrait;
+use Tests\Neznajka\Codeception\Engine\Contract\ExpectsSelfMethodCallInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveParametersInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionInterface;
+use Tests\Neznajka\Codeception\Engine\Objects\Logical\ConsecutiveCalls;
+use Tests\Neznajka\Codeception\Engine\Objects\Mockery\MockeryGetterObject;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionableInterface;
+use Tests\Neznajka\Codeception\Engine\Objects\Questions\AskSelfUsingMethod;
+use Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass\UnitTrait;
 
 /**
  * Trait HelperFunctionTrait
- * @package Tests\Neznajka\Unit\Traits
+ * @package Tests\Neznajka\Codeception\Engine\Traits
  */
 trait HelperFunctionTrait
 {

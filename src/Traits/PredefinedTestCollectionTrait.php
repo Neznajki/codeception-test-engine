@@ -6,19 +6,22 @@
  * Time: 11:07 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits;
+namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\RuntimeException;
 use ReflectionClass;
-use Tests\Neznajka\Unit\Traits\CodeceptionClass\UnitTrait;
+use ReflectionException;
+use Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass\UnitTrait;
 use TypeError;
+use UnitTester;
 
 /**
  * Class PredefinedTestCollectionTrait
- * @package Tests\Neznajka\Unit\Traits
+ * @package Tests\Neznajka\Codeception\Engine\Traits
  *
- * @uses \Tests\Neznajka\Unit\Traits\CommonAbstractionTrait
- * @method \UnitTester getTester();
+ * @uses \Tests\Neznajka\Codeception\Engine\Traits\CommonAbstractionTrait
+ * @method UnitTester getTester();
  */
 trait PredefinedTestCollectionTrait
 {
@@ -37,8 +40,8 @@ trait PredefinedTestCollectionTrait
     /**
      * @param string $functionName
      * @param mixed ...$arguments
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
-     * @throws \ReflectionException
+     * @throws RuntimeException
+     * @throws ReflectionException
      */
     protected function runEmptyFunctionTest(string $functionName, ... $arguments)
     {
@@ -60,12 +63,15 @@ trait PredefinedTestCollectionTrait
     /**
      * @param MockObject $mockedClass
      * @param mixed ...$parameterN
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function runConstructorTest(MockObject $mockedClass, ... $parameterN)
     {
         $reflectedClass = new ReflectionClass(get_class($mockedClass));
         $constructor    = $reflectedClass->getConstructor();
+        if (! $constructor->isPublic()) {
+            $constructor->setAccessible(true);
+        }
         call_user_func_array([$constructor, 'invoke'], func_get_args());
     }
 
@@ -74,7 +80,7 @@ trait PredefinedTestCollectionTrait
      * @param string $methodName
      * @param mixed ...$arguments
      * @return mixed
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function runNotPublicMethod($object, string $methodName, ... $arguments)
     {
@@ -89,7 +95,7 @@ trait PredefinedTestCollectionTrait
     /**
      * @param string $parameterName
      * @param $parameterValue
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function executeGetterSetterTest(string $parameterName, $parameterValue)
     {
@@ -118,7 +124,7 @@ trait PredefinedTestCollectionTrait
     /**
      * @param string $parameterName
      * @param $parameterValue
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function executeGetterTest(string $parameterName, $parameterValue)
     {
@@ -134,7 +140,7 @@ trait PredefinedTestCollectionTrait
     /**
      * @param string $parameterName
      * @param mixed|null $parameterValue
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function executeStrictTest(string $parameterName, $parameterValue = null)
     {

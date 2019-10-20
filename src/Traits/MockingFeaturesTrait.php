@@ -6,17 +6,18 @@
  * Time: 10:22 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits;
+namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 use AspectMock\Test;
 use Exception;
 use PHPUnit\Framework\MockObject\MockObject;
-use Tests\Neznajka\Unit\Traits\CodeceptionClass\UnitTrait;
-use Tests\Neznajka\Unit\Useful\ClassWithConstructor;
+use PHPUnit\Framework\MockObject\RuntimeException;
+use Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass\UnitTrait;
+use Tests\Neznajka\Codeception\Engine\Useful\ClassWithConstructor;
 
 /**
  * Class MockingFeaturesTrait
- * @package Tests\Neznajka\Unit\Traits
+ * @package Tests\Neznajka\Codeception\Engine\Traits
  */
 trait MockingFeaturesTrait
 {
@@ -37,7 +38,7 @@ trait MockingFeaturesTrait
     /**
      * @param string $originalClassName
      * @return MockObject
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws RuntimeException
      */
     protected function createMockExpectsNoUsage(string $originalClassName): MockObject
     {
@@ -68,7 +69,7 @@ trait MockingFeaturesTrait
      * @param string $className
      * @param array $usedMethods
      * @return MockObject
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws RuntimeException
      */
     protected function createPartialAbstractMock(string $className, array $usedMethods): MockObject
     {

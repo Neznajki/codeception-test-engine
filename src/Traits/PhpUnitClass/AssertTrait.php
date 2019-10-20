@@ -6,7 +6,7 @@
  * Time: 11:43 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits\PhpUnitClass;
+namespace Tests\Neznajka\Codeception\Engine\Traits\PhpUnitClass;
 
 use PHPUnit\Framework\Assert;
 use DOMElement;
@@ -51,7 +51,7 @@ use PHPUnit\Framework\Constraint\TraversableContainsOnly;
 
 /**
  * Class AssertTrait
- * @package Tests\Neznajka\Unit\Traits\PhpUnitClass
+ * @package Tests\Neznajka\Codeception\Engine\Traits\PhpUnitClass
  * @uses Assert
  *
  * @method assertArrayHasKey($key, $array, string $message = '');
@@ -61,10 +61,10 @@ use PHPUnit\Framework\Constraint\TraversableContainsOnly;
  * @method assertAttributeContains($needle, string $haystackAttributeName, $haystackClassOrObject, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false);
  * @method assertNotContains($needle, $haystack, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false);
  * @method assertAttributeNotContains($needle, string $haystackAttributeName, $haystackClassOrObject, string $message = '', bool $ignoreCase = false, bool $checkForObjectIdentity = true, bool $checkForNonObjectIdentity = false);
- * @method assertContainsOnly(string $type, \iterable $haystack, bool $isNativeType = null, string $message = '');
- * @method assertContainsOnlyInstancesOf(string $className, \iterable $haystack, string $message = '');
+ * @method assertContainsOnly(string $type, iterable $haystack, bool $isNativeType = null, string $message = '');
+ * @method assertContainsOnlyInstancesOf(string $className, iterable $haystack, string $message = '');
  * @method assertAttributeContainsOnly(string $type, string $haystackAttributeName, $haystackClassOrObject, bool $isNativeType = null, string $message = '');
- * @method assertNotContainsOnly(string $type, \iterable $haystack, bool $isNativeType = null, string $message = '');
+ * @method assertNotContainsOnly(string $type, iterable $haystack, bool $isNativeType = null, string $message = '');
  * @method assertAttributeNotContainsOnly(string $type, string $haystackAttributeName, $haystackClassOrObject, bool $isNativeType = null, string $message = '');
  * @method assertCount(int $expectedCount, $haystack, string $message = '');
  * @method assertAttributeCount(int $expectedCount, string $haystackAttributeName, $haystackClassOrObject, string $message = '');

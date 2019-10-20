@@ -7,18 +7,22 @@
  * Time: 11:13 AM
  */
 
-namespace Tests\Neznajka\Unit\Traits;
+namespace Tests\Neznajka\Codeception\Engine\Traits;
 
+use LogicException;
 use PHPUnit\Framework\MockObject\MockObject;
-use Tests\Neznajka\Unit\Service\ClassProxyProvider;
-use Tests\Neznajka\Unit\Traits\CodeceptionClass\UnitTrait;
-use Tests\Neznajka\Unit\ValueObject\TestCaseClassData;
-use Tests\Neznajka\Unit\ValueObject\TestCaseMethodData;
+use PHPUnit\Framework\MockObject\RuntimeException;
+use ReflectionClass;
+use ReflectionException;
+use Tests\Neznajka\Codeception\Engine\Service\ClassProxyProvider;
+use Tests\Neznajka\Codeception\Engine\Traits\CodeceptionClass\UnitTrait;
+use Tests\Neznajka\Codeception\Engine\ValueObject\TestCaseClassData;
+use Tests\Neznajka\Codeception\Engine\ValueObject\TestCaseMethodData;
 use UnitTester;
 
 /**
  * Class CommonTraitFunctions
- * @package Tests\Neznajka\Unit\Traits
+ * @package Tests\Neznajka\Codeception\Engine\Traits
  */
 trait CommonAbstractionTrait
 {
@@ -35,7 +39,7 @@ trait CommonAbstractionTrait
 
     /**
      * @return string
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function getWorkingClassNameSpace(): string
     {
@@ -53,9 +57,9 @@ trait CommonAbstractionTrait
     /**
      * @param mixed ...$mockedMethods
      * @return MockObject
-     * @throws \LogicException
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
-     * @throws \ReflectionException
+     * @throws LogicException
+     * @throws RuntimeException
+     * @throws ReflectionException
      */
     protected function getWorkingClassPrivateMock(... $mockedMethods)
     {
@@ -68,16 +72,16 @@ trait CommonAbstractionTrait
     /**
      * @param array $mockedMethods
      * @return MockObject
-     * @throws \LogicException
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
-     * @throws \ReflectionException
+     * @throws LogicException
+     * @throws RuntimeException
+     * @throws ReflectionException
      */
     protected function getWorkingClass(... $mockedMethods)
     {//TODO rework to object with primary method define (should error on any not defined method)
         if ($this->testClassName === null) {
             $this->testClassName = $this->getWorkingClassName();
         }
-        $classReflection = new \ReflectionClass($this->testClassName);
+        $classReflection = new ReflectionClass($this->testClassName);
         $allMethods      = $classReflection->getMethods();
 
         if ($this->getKeepExistingCodeFunctions() === null) {
@@ -115,7 +119,7 @@ trait CommonAbstractionTrait
 
         if ($methodFound === false) {
             $testingMethod = print_r($this->getKeepExistingCodeFunctions(), true);
-            throw new \LogicException("could not find testing method {$testingMethod} please use syntax test_methodName or testMethodName");
+            throw new LogicException("could not find testing method {$testingMethod} please use syntax test_methodName or testMethodName");
         }
 
         $class = $classReflection->getName();
@@ -149,7 +153,7 @@ trait CommonAbstractionTrait
     }
 
     /**
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function wantToTestThisMethod()
     {
@@ -164,7 +168,7 @@ trait CommonAbstractionTrait
 
     /**
      * @return string
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getTestingMethodName(): string
     {
@@ -193,7 +197,7 @@ trait CommonAbstractionTrait
 
     /**
      * @return TestCaseMethodData
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getMethodData(): TestCaseMethodData
     {
@@ -204,12 +208,12 @@ trait CommonAbstractionTrait
             }
         }
 
-        throw new \LogicException("this method should be called from any test case method");
+        throw new LogicException("this method should be called from any test case method");
     }
 
     /**
      * @return TestCaseClassData
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function getClassData(): TestCaseClassData
     {
@@ -226,11 +230,11 @@ trait CommonAbstractionTrait
     abstract protected function getWorkingClassName(): string;
 
     /**
-     * @param \ReflectionClass $classReflection
+     * @param ReflectionClass $classReflection
      * @return ClassProxyProvider
      * @codeCoverageIgnore
      */
-    private function getClassProxyProvider(\ReflectionClass $classReflection)
+    private function getClassProxyProvider(ReflectionClass $classReflection)
     {
         return new ClassProxyProvider($classReflection);
     }
