@@ -6,14 +6,15 @@
  * Time: 10:34 AM
  */
 
-namespace Tests\Neznajka\Unit\ValueObject;
+namespace Tests\Neznajka\Codeception\Engine\ValueObject;
 
 use LogicException;
+use ReflectionException;
 use ReflectionMethod;
 
 /**
  * Class TestCaseData
- * @package Tests\Neznajka\Unit\ValueObject
+ * @package Tests\Neznajka\Codeception\Engine\ValueObject
  */
 class TestCaseTargetData
 {
@@ -29,7 +30,7 @@ class TestCaseTargetData
      * @param TestCaseMethodData $functionData
      * @param TestCaseClassData $classData
      * @throws LogicException
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function __construct(TestCaseMethodData $functionData, TestCaseClassData $classData)
     {
@@ -81,7 +82,7 @@ class TestCaseTargetData
 
     /**
      * @throws LogicException
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     private function validate()
     {

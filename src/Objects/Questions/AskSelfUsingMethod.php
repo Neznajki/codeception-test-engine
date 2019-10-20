@@ -6,17 +6,17 @@
  * Time: 2:57 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Questions;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Questions;
 
 use Exception;
-use Tests\Neznajka\Unit\Contract\ExpectsSelfMethodCallInterface;
-use Tests\Neznajka\Unit\Contract\HaveConsecutiveMethodCallsInterface;
-use Tests\Neznajka\Unit\Contract\QuestionInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\ExpectsSelfMethodCallInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveConsecutiveMethodCallsInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionInterface;
 
 
 /**
  * Class AskSelfQuestion
- * @package Tests\Neznajka\Unit\Objects\Questions
+ * @package Tests\Neznajka\Codeception\Engine\Objects\Questions
  */
 class AskSelfUsingMethod implements QuestionInterface, ExpectsSelfMethodCallInterface, HaveConsecutiveMethodCallsInterface
 {

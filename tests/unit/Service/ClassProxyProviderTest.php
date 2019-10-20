@@ -17,12 +17,13 @@ use gossi\codegen\model\AbstractPhpStruct;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;
+use LogicException;
 use PHPUnit\Framework\MockObject\MockObject;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionType;
-use Tests\Neznajka\Unit\Abstraction\AbstractSimpleCodeceptionTest;
-use Tests\Neznajka\Unit\Service\ClassProxyProvider;
+use Tests\Neznajka\Codeception\Engine\Abstraction\AbstractSimpleCodeceptionTest;
+use Tests\Neznajka\Codeception\Engine\Service\ClassProxyProvider;
 
 /**
  * Class ClassProxyProviderTest
@@ -117,7 +118,7 @@ class ClassProxyProviderTest extends AbstractSimpleCodeceptionTest
     public function test_createTestClass_case_class_not_created()
     {
         $this->wantToTestThisMethod();
-        $this->expectException(\LogicException::class);
+        $this->expectException(LogicException::class);
         $workingClass = $this->getWorkingClass('getReflectionClass', 'createClassWithProtectedMethods');
 
         $classNameMock       = $this->getString();
@@ -447,7 +448,7 @@ class ClassProxyProviderTest extends AbstractSimpleCodeceptionTest
             ->with()->willReturnOnConsecutiveCalls(false, true, false);
 
         $finalClassMock->expects($this->exactly(2))->method('setProperty')
-            ->withConsecutive($propertyMocks[0], $propertyMocks[2]);
+            ->withConsecutive([$propertyMocks[0]], [$propertyMocks[2]]);
 
         $workingClass->expects($this->once())->method('getReflectionClass')->with()->willReturn($reflectionClassMock);
 

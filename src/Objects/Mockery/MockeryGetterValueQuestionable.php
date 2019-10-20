@@ -8,9 +8,9 @@
 
 namespace Mockery;
 
-use Tests\Neznajka\Unit\Contract\QuestionableInterface;
-use Tests\Neznajka\Unit\Contract\QuestionInterface;
-use Tests\Neznajka\Unit\Objects\Mockery\MockeryGetterValue;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionableInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionInterface;
+use Tests\Neznajka\Codeception\Engine\Objects\Mockery\MockeryGetterValue;
 
 
 /**

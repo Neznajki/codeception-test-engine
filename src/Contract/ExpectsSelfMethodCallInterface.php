@@ -6,12 +6,12 @@
  * Time: 4:07 PM
  */
 
-namespace Tests\Neznajka\Unit\Contract;
+namespace Tests\Neznajka\Codeception\Engine\Contract;
 
 
 /**
  * Interface ExpectsSelfMethodCall
- * @package Tests\Neznajka\Unit\Contract
+ * @package Tests\Neznajka\Codeception\Engine\Contract
  * @codeCoverageIgnore
  */
 interface ExpectsSelfMethodCallInterface

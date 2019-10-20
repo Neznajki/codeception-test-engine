@@ -6,11 +6,13 @@
  * Time: 10:47 AM
  */
 
-namespace Tests\Neznajka\Unit\ValueObject;
+namespace Tests\Neznajka\Codeception\Engine\ValueObject;
+
+use LogicException;
 
 /**
  * Class TestCaseMethodData
- * @package Tests\Neznajka\Unit\ValueObject
+ * @package Tests\Neznajka\Codeception\Engine\ValueObject
  */
 class TestCaseMethodData
 {
@@ -26,7 +28,7 @@ class TestCaseMethodData
     /**
      * TestCaseData constructor.
      * @param string $fullFunctionName
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct(string $fullFunctionName)
     {
@@ -61,7 +63,7 @@ class TestCaseMethodData
 
     /**
      * @param string $fullFunctionName
-     * @throws \LogicException
+     * @throws LogicException
      */
     private function parseFunction(string $fullFunctionName)
     {
@@ -74,7 +76,7 @@ class TestCaseMethodData
         $targetFunctionName = preg_replace('/test_?(.+)$/', '$1', $functionName);
 
         if ($targetFunctionName === $functionName) {
-            throw new \LogicException("test function must start with test_ or test[A-Z_]");
+            throw new LogicException("test function must start with test_ or test[A-Z_]");
         }
 
         $this->targetFunction = lcfirst($targetFunctionName);

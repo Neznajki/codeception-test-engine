@@ -11,11 +11,11 @@ namespace Tests\TestsEngine\unit\Abstraction;
 
 use Codeception\Test\Unit;
 use PHPUnit\Framework\MockObject\MockObject;
-use Tests\Neznajka\Unit\Abstraction\AbstractSimpleCodeceptionTest;
-use Tests\Neznajka\Unit\Traits\CommonAbstractionTrait;
-use Tests\Neznajka\Unit\Traits\NotPublicParametersTrait;
-use Tests\Neznajka\Unit\Traits\PredefinedTestCollectionTrait;
-use Tests\Neznajka\Unit\Traits\RandomGenerationTrait;
+use Tests\Neznajka\Codeception\Engine\Abstraction\AbstractSimpleCodeceptionTest;
+use Tests\Neznajka\Codeception\Engine\Traits\CommonAbstractionTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\NotPublicParametersTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\PredefinedTestCollectionTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\RandomGenerationTrait;
 
 /**
  * Class TestAbstractSimpleCodeceptionTestTest

@@ -6,13 +6,14 @@
  * Time: 11:22 AM
  */
 
-namespace Tests\Neznajka\Unit\Useful;
+namespace Tests\Neznajka\Codeception\Engine\Useful;
 
+use LogicException;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Class ClassWithConstructor
- * @package Tests\Neznajka\Unit\Useful
+ * @package Tests\Neznajka\Codeception\Engine\Useful
  */
 class ClassWithConstructor
 {
@@ -22,7 +23,7 @@ class ClassWithConstructor
     /**
      * ClassWithConstructor constructor.
      * @param mixed ...$anythingHere
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function __construct(... $anythingHere)
     {
@@ -44,12 +45,12 @@ class ClassWithConstructor
     /**
      * @param $pos
      * @param $value
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function testIncomingParameter($pos, $value)
     {
         if (static::$mockObject === null) {
-            throw new \LogicException('please create mock that will test everything $this->getDynamicConstructorTestClass(... $arguments)');
+            throw new LogicException('please create mock that will test everything $this->getDynamicConstructorTestClass(... $arguments)');
         }
 
         static::$mockObject->testIncomingParameter($pos, $value);

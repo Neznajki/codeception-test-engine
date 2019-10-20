@@ -6,16 +6,16 @@
  * Time: 2:35 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Mockery;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Mockery;
 
-use Tests\Neznajka\Unit\Contract\QuestionableInterface;
-use Tests\Neznajka\Unit\Contract\QuestionInterface;
-use Tests\Neznajka\Unit\Objects\Questions\AskSelfUsingMethod;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionableInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionInterface;
+use Tests\Neznajka\Codeception\Engine\Objects\Questions\AskSelfUsingMethod;
 
 
 /**
  * Class MockeryGetterObjectQuestionable
- * @package Tests\Neznajka\Unit\Objects
+ * @package Tests\Neznajka\Codeception\Engine\Objects
  */
 class MockeryGetterObjectQuestionable extends MockeryGetterObject implements QuestionableInterface
 {

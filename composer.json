@@ -7,23 +7,39 @@
             "usefulFunctions.php"
         ],
         "psr-4": {
-            "Tests\\Neznajka\\Unit\\": "src"
+            "Tests\\Neznajka\\Codeception\\Engine\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\TestsEngine\\": "tests"
+            "Tests\\TestsEngine\\": "tests",
+            "Tests\\TestsEngine\\Code\\": "tests/src"
         }
     },
     "license": "proprietary",
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.3",
         "ext-dom": "*",
+        "ext-zip": "*",
+        "ext-mysqli": "*",
+        "psr/simple-cache": "*",
         "gossi/php-code-generator": "*",
-        "codeception/aspect-mock": "^3.0",
-        "codeception/codeception": "^2.5",
-        "psr/container": "*",
+        "codeception/aspect-mock": ">=3.0",
+        "codeception/codeception": ">=3.1",
         "symfony/var-dumper": "*"
+    },
+    "require-dev": {
+        "psr/container": "*",
+        "symfony/event-dispatcher": ">=4.2",
+        "symfony/event-dispatcher-contracts": "*",
+        "symfony/framework-bundle": "^4.3",
+        "symfony/flex": "^1.4"
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        }
     }
 }

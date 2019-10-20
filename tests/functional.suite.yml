@@ -1,0 +1,32 @@
+# Codeception Test Suite Configuration
+#
+# Suite for functional tests
+# Emulate web requests and make application process them
+# Include one of framework modules (Symfony2, Yii2, Laravel5) to use it
+# Remove this suite if you don't use frameworks
+
+actor: FunctionalTester
+modules:
+    enabled:
+        # add a framework module here
+        - \Helper\Functional
+        - Asserts
+
+extensions:
+    enabled:
+        - Tests\Neznajka\Codeception\Engine\Extension\MethodDisableExtension
+
+bootstrap: bootstrap.php
+
+disabled_methods:
+    - [ 'Tests\TestsEngine\Code\TestMockingMethod', 'meMocked' ]
+    - [ 'Tests\TestsEngine\Code\TestMockingMethod', 'meMockedStatic' ]
+
+aspect_mock:
+    include_paths:
+        - src
+        - tests/src
+        - vendor/gossi/php-code-generator/src/model
+        - vendor/codeception/aspect-mock/src/AspectMock
+    temp_folder:
+        "unit_tests"

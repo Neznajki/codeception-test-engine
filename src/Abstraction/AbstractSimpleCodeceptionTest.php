@@ -7,15 +7,15 @@
  * Time: 10:18 AM
  */
 
-namespace Tests\Neznajka\Unit\Abstraction;
+namespace Tests\Neznajka\Codeception\Engine\Abstraction;
 
 use Codeception\Test\Unit;
-use Tests\Neznajka\Unit\Traits\CommonAbstractionTrait;
-use Tests\Neznajka\Unit\Traits\CommonGetters;
-use Tests\Neznajka\Unit\Traits\MockingFeaturesTrait;
-use Tests\Neznajka\Unit\Traits\NotPublicParametersTrait;
-use Tests\Neznajka\Unit\Traits\PredefinedTestCollectionTrait;
-use Tests\Neznajka\Unit\Traits\RandomGenerationTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\CommonAbstractionTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\CommonGetters;
+use Tests\Neznajka\Codeception\Engine\Traits\MockingFeaturesTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\NotPublicParametersTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\PredefinedTestCollectionTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\RandomGenerationTrait;
 use UnitTester;
 
 /**
@@ -36,15 +36,4 @@ abstract class AbstractSimpleCodeceptionTest extends Unit
      * @var UnitTester
      */
     protected $tester;
-
-    /**
-     * AbstractSimpleCodeceptionTest constructor.
-     * @param string|null $name
-     * @param array $data
-     * @param string $dataName
-     */
-    public function __construct(string $name = null, array $data = [], string $dataName = '')
-    {
-        parent::__construct($name, $data, $dataName);
-    }
 }

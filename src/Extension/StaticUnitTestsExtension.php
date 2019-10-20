@@ -7,7 +7,7 @@
  * Time: 9:48 AM
  */
 
-namespace Tests\Neznajka\Unit\Extension;
+namespace Tests\Neznajka\Codeception\Engine\Extension;
 
 use AspectMock\Kernel;
 use AspectMock\Test;
@@ -15,10 +15,13 @@ use Codeception\Event\SuiteEvent;
 use Codeception\Event\TestEvent;
 use Codeception\Events;
 use Codeception\Extension;
+use LogicException;
+use RuntimeException;
+use Throwable;
 
 /**
  * Class StaticUnitTestsExtension
- * @package Tests\Neznajka\UnitTest\Extension
+ * @package Tests\Dyninno\UnitTest\Extension
  */
 class StaticUnitTestsExtension extends Extension
 {
@@ -35,14 +38,15 @@ class StaticUnitTestsExtension extends Extension
      * @var array
      */
     public static $events = [
-        Events::SUITE_BEFORE => 'init',
-        Events::SUITE_AFTER  => 'cleanup',
-        Events::TEST_AFTER   => 'clearStatic',
+        Events::SUITE_INIT  => 'init',
+        Events::SUITE_AFTER => 'cleanup',
+        Events::TEST_AFTER  => 'clearStatic',
     ];
 
     /**
      * @param SuiteEvent $e
-     * @throws \LogicException
+     * @throws LogicException
+     * @throws RuntimeException
      */
     public function init(SuiteEvent $e)
     {
@@ -85,7 +89,7 @@ class StaticUnitTestsExtension extends Extension
 
     /**
      * @return array
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getIncludePath(): array
     {
@@ -100,7 +104,7 @@ class StaticUnitTestsExtension extends Extension
 
     /**
      * @return string
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getProjectRoot(): string
     {
@@ -114,7 +118,7 @@ class StaticUnitTestsExtension extends Extension
     /**
      * @param string $next
      * @return string
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function constructProjectRootDir(string $next = null): string
     {
@@ -128,7 +132,7 @@ class StaticUnitTestsExtension extends Extension
         }
 
         if (empty($current) || $current === '/') {
-            throw new \LogicException("project root dir could not be detected");
+            throw new LogicException("project root dir could not be detected");
         }
 
         return $this->constructProjectRootDir($current);
@@ -144,14 +148,14 @@ class StaticUnitTestsExtension extends Extension
 
     /**
      * @return string
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getTempFolder(): string
     {
         $configuration = $this->getAspectMockConfiguration();
 
         if (! array_key_exists('temp_folder', $configuration)) {
-            throw new \LogicException("temp_folder is required for aspect mock static temp file storing");
+            throw new LogicException("temp_folder is required for aspect mock static temp file storing");
         }
 
         return $configuration['temp_folder'];
@@ -159,7 +163,7 @@ class StaticUnitTestsExtension extends Extension
 
     /**
      * @return array
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getAspectIncludePath(): array
     {
@@ -174,14 +178,14 @@ class StaticUnitTestsExtension extends Extension
 
     /**
      * @return array
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getAspectMockConfiguration(): array
     {
         $settings = $this->getSuiteEvent()->getSettings();
 
         if (! array_key_exists('aspect_mock', $settings)) {
-            throw new \LogicException("aspect_mock is required to detect extension settings");
+            throw new LogicException("aspect_mock is required to detect extension settings");
         }
 
         return $settings['aspect_mock'];
@@ -228,16 +232,21 @@ class StaticUnitTestsExtension extends Extension
 
     /**
      * @codeCoverageIgnore mocked as private
+     * @throws RuntimeException
      */
     protected function createTempFolder()
     {
-        mkdir($this->getCacheFolder(), 0777, true);
+        try {
+            mkdir($this->getCacheFolder(), 0777, true);
+        } catch (Throwable $exception) {
+            throw new RuntimeException($exception->getMessage() . " for path ({$this->getCacheFolder()}");
+        }
     }
 
     /**
      * @param string $runDir
      * @return StaticUnitTestsExtension
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function setCacheFolder(string $runDir): self
     {
@@ -257,13 +266,13 @@ class StaticUnitTestsExtension extends Extension
     /**
      * @param $item
      * @return string
-     * @throws \LogicException
+     * @throws LogicException
      */
     protected function getIncludePathEntry($item): string
     {
         $itemFolder = "{$this->getProjectRoot()}/{$item}";
         if (! file_exists($itemFolder)) {
-            throw new \LogicException("{$itemFolder} does not exist please remove from aspect mock include path");
+            throw new LogicException("{$itemFolder} does not exist please remove from aspect mock include path");
         }
 
         return $itemFolder;

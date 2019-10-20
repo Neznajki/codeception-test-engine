@@ -6,12 +6,12 @@
  * Time: 1:23 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Mockery;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Mockery;
 
 
 /**
  * Class MockeryMakerObject
- * @package Tests\Neznajka\Unit\Objects
+ * @package Tests\Neznajka\Codeception\Engine\Objects
  */
 class MockeryMakerObject
 {

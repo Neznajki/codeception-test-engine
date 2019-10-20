@@ -6,11 +6,11 @@
  * Time: 1:41 PM
  */
 
-namespace Tests\Neznajka\Unit\Useful;
+namespace Tests\Neznajka\Codeception\Engine\Useful;
 
 /**
  * Class ClassWithFinalMethods
- * @package Tests\Neznajka\Unit\Useful
+ * @package Tests\Neznajka\Codeception\Engine\Useful
  * @codeCoverageIgnore
  */
 class ClassWithFinalMethods

@@ -6,15 +6,15 @@
  * Time: 2:31 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Mockery;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Mockery;
 
-use Tests\Neznajka\Unit\Contract\ExpectsSelfMethodCallInterface;
-use Tests\Neznajka\Unit\Contract\HaveConsecutiveMethodCallsInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\ExpectsSelfMethodCallInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveConsecutiveMethodCallsInterface;
 
 
 /**
  * Class MockeryGetterValue
- * @package Tests\Neznajka\Unit\Objects
+ * @package Tests\Neznajka\Codeception\Engine\Objects
  */
 class MockeryGetterValue implements ExpectsSelfMethodCallInterface, HaveConsecutiveMethodCallsInterface
 {

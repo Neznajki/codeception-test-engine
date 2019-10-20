@@ -6,14 +6,14 @@
  * Time: 2:57 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Questions;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Questions;
 
-use Tests\Neznajka\Unit\Contract\HaveParametersInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveParametersInterface;
 
 
 /**
  * Class AskSelfQuestion
- * @package Tests\Neznajka\Unit\Objects\Questions
+ * @package Tests\Neznajka\Codeception\Engine\Objects\Questions
  */
 class AskSelfUsingMethodWithParameters extends AskSelfUsingMethod implements HaveParametersInterface
 {

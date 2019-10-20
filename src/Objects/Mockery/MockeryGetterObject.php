@@ -6,14 +6,14 @@
  * Time: 12:12 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Mockery;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Mockery;
 
-use Tests\Neznajka\Unit\Contract\ExpectsSelfMethodCallInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\ExpectsSelfMethodCallInterface;
 
 
 /**
  * Class MockeryObject
- * @package Tests\Neznajka\Unit\Objects
+ * @package Tests\Neznajka\Codeception\Engine\Objects
  */
 class MockeryGetterObject implements ExpectsSelfMethodCallInterface
 {

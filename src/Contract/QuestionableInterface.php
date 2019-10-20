@@ -6,12 +6,12 @@
  * Time: 3:16 PM
  */
 
-namespace Tests\Neznajka\Unit\Contract;
+namespace Tests\Neznajka\Codeception\Engine\Contract;
 
 
 /**
  * Interface Questionable
- * @package Tests\Neznajka\Unit\Contract
+ * @package Tests\Neznajka\Codeception\Engine\Contract
  * @codeCoverageIgnore
  */
 interface QuestionableInterface

@@ -6,13 +6,14 @@
  * Time: 10:47 AM
  */
 
-namespace Tests\Neznajka\Unit\ValueObject;
+namespace Tests\Neznajka\Codeception\Engine\ValueObject;
 
 use ReflectionClass;
+use ReflectionException;
 
 /**
  * Class TestCaseFunctionData
- * @package Tests\Neznajka\Unit\ValueObject
+ * @package Tests\Neznajka\Codeception\Engine\ValueObject
  */
 class TestCaseClassData
 {
@@ -22,7 +23,7 @@ class TestCaseClassData
     /**
      * TestCaseClassData constructor.
      * @param string $className
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function __construct(string $className)
     {

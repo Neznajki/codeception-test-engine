@@ -6,17 +6,18 @@
  * Time: 11:13 AM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Logical;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Logical;
 
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\RuntimeException;
 use PHPUnit\Framework\TestCase;
-use Tests\Neznajka\Unit\Contract\HaveConsecutiveMethodCallsInterface;
-use Tests\Neznajka\Unit\Contract\HaveParametersInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveConsecutiveMethodCallsInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveParametersInterface;
 
 
 /**
  * Class ConsecutiveCalls
- * @package Tests\Neznajka\Unit\Objects\Logical
+ * @package Tests\Neznajka\Codeception\Engine\Objects\Logical
  */
 class ConsecutiveCalls extends TestCase
 {
@@ -50,7 +51,7 @@ class ConsecutiveCalls extends TestCase
 
     /**
      * @param MockObject $class
-     * @throws \PHPUnit\Framework\MockObject\RuntimeException
+     * @throws RuntimeException
      */
     public function assignConsecutiveMethodCalls($class)
     {

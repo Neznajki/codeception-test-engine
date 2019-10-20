@@ -6,16 +6,16 @@
  * Time: 3:21 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Mockery;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Mockery;
 
 use Mockery\MockeryGetterValueQuestionable;
-use Tests\Neznajka\Unit\Contract\HaveParametersInterface;
-use Tests\Neznajka\Unit\Contract\QuestionInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveParametersInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\QuestionInterface;
 
 
 /**
  * Class MockeryGetterValueQuestionable
- * @package Tests\Neznajka\Unit\Objects\Mockery
+ * @package Tests\Neznajka\Codeception\Engine\Objects\Mockery
  */
 class MockeryGetterValueQuestionableWithParameters extends MockeryGetterValueQuestionable implements HaveParametersInterface
 {

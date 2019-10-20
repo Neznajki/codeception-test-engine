@@ -6,12 +6,12 @@
  * Time: 11:07 AM
  */
 
-namespace Tests\Neznajka\Unit\Contract;
+namespace Tests\Neznajka\Codeception\Engine\Contract;
 
 
 /**
  * Interface HaveConsecutiveMethodCalls
- * @package Tests\Neznajka\Unit\Contract
+ * @package Tests\Neznajka\Codeception\Engine\Contract
  * @codeCoverageIgnore
  */
 interface HaveConsecutiveMethodCallsInterface

@@ -6,17 +6,21 @@
  * Time: 1:05 PM
  */
 
-namespace Tests\Neznajka\Unit\Service;
+namespace Tests\Neznajka\Codeception\Engine\Service;
 
 use gossi\codegen\generator\CodeGenerator;
 use gossi\codegen\model\PhpClass;
 use gossi\codegen\model\PhpMethod;
 use gossi\codegen\model\PhpProperty;
+use InvalidArgumentException;
+use LogicException;
 use ReflectionClass;
+use ReflectionException;
+use ReflectionType;
 
 /**
  * Class ClassProxyProvider
- * @package Tests\Neznajka\Unit\Service
+ * @package Tests\Neznajka\Codeception\Engine\Service
  *
  * classes with private methods will show no coverage
  */
@@ -43,9 +47,9 @@ class ClassProxyProvider
 
     /**
      * @return ReflectionClass
-     * @throws \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws LogicException
+     * @throws ReflectionException
      */
     public function createTestClass(): ReflectionClass
     {
@@ -57,7 +61,7 @@ class ClassProxyProvider
         }
 
         if (! class_exists($testClassName)) {
-            throw new \LogicException("{$testClassName} does not exists");
+            throw new LogicException("{$testClassName} does not exists");
         }
 
         return new ReflectionClass($testClassName);
@@ -65,7 +69,7 @@ class ClassProxyProvider
 
     /**
      * @return ReflectionClass
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function createTestTrait(): ReflectionClass
     {
@@ -110,8 +114,8 @@ class ClassProxyProvider
     /**
      * @param PhpMethod $method
      * @param PhpClass $finalClass
-     * @throws \InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     protected function assignNewMethod(PhpMethod $method, PhpClass $finalClass)
     {
@@ -124,8 +128,8 @@ class ClassProxyProvider
     }
 
     /**
-     * @throws \InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     protected function createClassWithProtectedMethods()
     {
@@ -157,14 +161,14 @@ class ClassProxyProvider
 
     /**
      * @param PhpMethod $method
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected function fixReturnType(PhpMethod $method)
     {
         $classReflection  = $this->getReflectionClass();
 
         $reflectionType = $classReflection->getMethod($method->getName())->getReturnType();
-        if ($reflectionType instanceof \ReflectionType) {
+        if ($reflectionType instanceof ReflectionType) {
             $reflectionType = (string)$reflectionType;
         }
 
@@ -185,7 +189,7 @@ class ClassProxyProvider
     /**
      * @param PhpClass $class
      * @param PhpClass $finalClass
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function addProperties(PhpClass $class, PhpClass $finalClass)
     {
@@ -260,8 +264,8 @@ class ClassProxyProvider
     /**
      * @param PhpClass $class
      * @param PhpClass $finalClass
-     * @throws \InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     protected function addMethods(PhpClass $class, PhpClass $finalClass)
     {

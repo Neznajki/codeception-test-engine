@@ -6,14 +6,14 @@
  * Time: 3:37 PM
  */
 
-namespace Tests\Neznajka\Unit\Objects\Mockery;
+namespace Tests\Neznajka\Codeception\Engine\Objects\Mockery;
 
-use Tests\Neznajka\Unit\Contract\HaveParametersInterface;
+use Tests\Neznajka\Codeception\Engine\Contract\HaveParametersInterface;
 
 
 /**
  * Class MockeryGetterValueWithParameters
- * @package Tests\Neznajka\Unit\Objects\Mockery
+ * @package Tests\Neznajka\Codeception\Engine\Objects\Mockery
  */
 class MockeryGetterValueWithParametersQuestionable extends MockeryGetterValue implements HaveParametersInterface
 {

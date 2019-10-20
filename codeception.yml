@@ -8,8 +8,10 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
-        - Tests\Neznajka\Unit\Extension\StaticUnitTestsExtension
+        - Tests\Neznajka\Codeception\Engine\Extension\StaticUnitTestsExtension
 
+#settings:
+#    bootstrap: bootstrap.php
 #php vendor/bin/codecept run unit --coverage --html
 
 coverage:
