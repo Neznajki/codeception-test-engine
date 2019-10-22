@@ -1,5 +1,5 @@
 {
-    "name": "Neznajka/unit-test-engine",
+    "name": "neznajki/unit-test-engine",
     "description": "just a cool library that will have some useful test traits for unit testing.",
     "type": "library",
     "autoload": {
