@@ -36,7 +36,7 @@ class QueryMatcherTraitCest extends AbstractFunctionalSymfonyCodeceptionTest
             Test::clean();
 
             $self = $this;
-            $I->expectThrowable(
+            $I->expectException(
                 LogicException::class,
                 function () use ($self, $I) {
                     $self->_after($I);

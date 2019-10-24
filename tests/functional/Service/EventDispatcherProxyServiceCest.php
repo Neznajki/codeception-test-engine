@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 use Symfony\Component\EventDispatcher\Event;
 use Tests\Neznajka\Codeception\Engine\Service\EventDispatcherProxyService;
-use Tests\Neznajka\Codeception\Engine\Traits\SymfonyKernelTrait;
 use Tests\Neznajka\Codeception\Engine\Traits\RandomGenerationTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\SymfonyKernelTrait;
 use Tests\Neznajka\Codeception\Engine\ValueObject\EventDispatcherProxyData;
 use Tests\TestsEngine\Code\TestSuccessException;
 
@@ -31,13 +31,10 @@ class EventDispatcherProxyServiceCest
         $dispatcher->addListener($eventPlace, $eventDispatcherProxyData);
 
         try {
-            $event = new Event();
-            $dispatcher->dispatch($event, $eventPlace);
+            $dispatcher->dispatch($eventPlace, new Event());
         } /** @noinspection PhpRedundantCatchClauseInspection */ catch (TestSuccessException $exception) {
             $I->assertTrue(true);
             return;
-        } finally {
-            $dispatcher->failScenario();
         }
 
         $I->assertTrue(false, "exception should be thrown");
@@ -56,8 +53,7 @@ class EventDispatcherProxyServiceCest
         $dispatcher->addListener($eventPlace, $eventDispatcherProxyData);
 
         for($i = 0; $i < $callCount; $i++) {
-            $event = new Event();
-            $dispatcher->dispatch($event, $eventPlace);
+            $dispatcher->dispatch($eventPlace, new Event());
         }
 
         $dispatcher->checkCalls();

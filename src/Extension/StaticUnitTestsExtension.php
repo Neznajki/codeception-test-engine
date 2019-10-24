@@ -21,7 +21,7 @@ use Throwable;
 
 /**
  * Class StaticUnitTestsExtension
- * @package Tests\Dyninno\UnitTest\Extension
+ * @package Tests\Neznajka\Codeception\Engine\Extension
  */
 class StaticUnitTestsExtension extends Extension
 {

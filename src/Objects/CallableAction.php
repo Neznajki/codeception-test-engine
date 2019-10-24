@@ -39,6 +39,11 @@ class CallableAction
         $this->dispatchAction($paramArr);
     }
 
+    public function resultTrue()
+    {
+        return true;
+    }
+
     /**
      * @param FunctionalTester $I
      * @return array

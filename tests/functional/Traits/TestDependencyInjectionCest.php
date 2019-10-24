@@ -1,9 +1,9 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
-/** @noinspection PhpDocMissingThrowsInspection */
+<?php
+/** @noinspection PhpUnhandledExceptionInspection */
 declare(strict_types=1);
 
-use Tests\Neznajka\Codeception\Engine\Traits\SymfonyKernelTrait;
 use Tests\Neznajka\Codeception\Engine\Traits\RandomGenerationTrait;
+use Tests\Neznajka\Codeception\Engine\Traits\SymfonyKernelTrait;
 use Tests\TestsEngine\Code\MethodDependency\MethodDependency;
 use Tests\TestsEngine\Code\MethodDependency\TestDependency;
 use Tests\TestsEngine\Code\MethodDependency\TestSubject;
@@ -18,6 +18,8 @@ class TestDependencyInjectionCest
 
     /**
      * @param FunctionalTester $I
+     * @throws ReflectionException
+     * @throws RuntimeException
      */
     public function testGetMethodArguments(FunctionalTester $I)
     {

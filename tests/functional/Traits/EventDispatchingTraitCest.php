@@ -6,7 +6,7 @@ namespace Tests\TestsEngine\functional\Traits;
 use FunctionalTester;
 use LogicException;
 use RuntimeException;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 use Tests\Neznajka\Codeception\Engine\Abstraction\AbstractFunctionalSymfonyCodeceptionTest;
 use Tests\Neznajka\Codeception\Engine\Traits\EventDispatchingTrait;
 use Tests\Neznajka\Codeception\Engine\ValueObject\EventDispatcherProxyData;
@@ -58,7 +58,7 @@ class EventDispatchingTraitCest extends AbstractFunctionalSymfonyCodeceptionTest
         $this->expectException = false;
 
         $self = $this;
-        $I->expectThrowable(
+        $I->expectException(
             RuntimeException::class,
             function () use ($self, $I) {
                 $self->_after($I);

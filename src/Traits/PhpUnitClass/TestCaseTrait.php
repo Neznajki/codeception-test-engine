@@ -11,10 +11,14 @@ namespace Tests\Neznajka\Codeception\Engine\Traits\PhpUnitClass;
 
 
 use Exception;
+use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount as AnyInvokedCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtIndex as InvokedAtIndexMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtLeastCount as InvokedAtLeastCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtLeastOnce as InvokedAtLeastOnceMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedAtMostCount as InvokedAtMostCountMatcher;
+use PHPUnit\Framework\MockObject\Rule\InvokedCount as InvokedCountMatcher;
 use PHPUnit\Framework\MockObject\MockBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Rule\AnyInvokedCount as AnyInvokedCountMatcher;
-use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use PHPUnit\Framework\MockObject\Stub\ConsecutiveCalls as ConsecutiveCallsStub;
 use PHPUnit\Framework\MockObject\Stub\Exception as ExceptionStub;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument as ReturnArgumentStub;
@@ -41,11 +45,11 @@ use Throwable;
  * @property $preserveGlobalState;
  *
  * @method AnyInvokedCountMatcher any()
- * @method InvocationOrder never()
+ * @method InvokedCountMatcher never()
  * @method InvokedAtLeastCountMatcher atLeast(int $requiredInvocations)
  * @method InvokedAtLeastOnceMatcher atLeastOnce()
- * @method InvocationOrder once()
- * @method InvocationOrder exactly(int $count)
+ * @method InvokedCountMatcher once()
+ * @method InvokedCountMatcher exactly(int $count)
  * @method InvokedAtMostCountMatcher atMost(int $allowedInvocations)
  * @method InvokedAtIndexMatcher at(int $index)
  * @method ReturnStub returnValue($value)
