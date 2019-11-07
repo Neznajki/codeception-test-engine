@@ -12,17 +12,13 @@ actor_suffix: Tester
 extensions:
     enabled:
         - Codeception\Extension\RunFailed
+        - Tests\Neznajka\Codeception\Engine\Extension\StaticUnitTestsExtension
 
 #php vendor/bin/codecept run unit --coverage --html
 coverage:
     enabled: true
     include:
-        - app/*
-        - bootstrap/*
-        - bootstrap.php
-        - console.php
-        - jsonService.php
-        - index.php
+        - src/*
+        - public/*
     exclude:
-        - app/Models/*
-        - app/Exception/*
+        - src/Exception/*

@@ -7,15 +7,10 @@ env:
     dev:
     stage:
 
-extensions:
-    enabled:
-        - Tests\Neznajka\Unit\Extension\StaticUnitTestsExtension
-
 aspect_mock:
     include_paths:
-        - app
-        - vendor/cms-core
-        - vendor/cms-libraries
+        - src/*
+        - public/*
     temp_folder:
         "unit_tests"
 
