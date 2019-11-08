@@ -1,6 +1,6 @@
 {
     "name": "neznajki/codeception-test-engine",
-    "description": "just a cool library that will have some useful test traits for unit testing.",
+    "description": "just a cool library that will have some useful test traits for unit testing. TODO fix issues with gossi/php-code-generator for private mocking",
     "type": "library",
     "autoload": {
         "files": [
@@ -24,7 +24,6 @@
         "ext-zip": "*",
         "ext-mysqli": "*",
         "psr/simple-cache": "*",
-        "gossi/php-code-generator": "*",
         "codeception/aspect-mock": ">=3.0",
         "codeception/codeception": ">=3.1",
         "symfony/var-dumper": "*"

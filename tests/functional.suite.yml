@@ -26,7 +26,7 @@ aspect_mock:
     include_paths:
         - src
         - tests/src
-        - vendor/gossi/php-code-generator/src/model
+#        - vendor/gossi/php-code-generator/src/model
         - vendor/codeception/aspect-mock/src/AspectMock
     temp_folder:
         "unit_tests"

@@ -63,10 +63,11 @@ trait CommonAbstractionTrait
      */
     protected function getWorkingClassPrivateMock(... $mockedMethods)
     {
-        $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestClass();
-        $this->testClassName = $classReflection->getName();
-
-        return $this->getWorkingClass(... func_get_args());
+        throw new RuntimeException('TODO fix private mocking could not suite latest nikic/php-parser');
+//        $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestClass();
+//        $this->testClassName = $classReflection->getName();
+//
+//        return $this->getWorkingClass(... func_get_args());
     }
 
     /**
@@ -124,8 +125,9 @@ trait CommonAbstractionTrait
 
         $class = $classReflection->getName();
         if ($classReflection->isTrait()) {
-            $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestTrait();
-            $class = $classReflection->getName();
+            throw new RuntimeException('TODO fix private mocking could not suite latest nikic/php-parser');
+//            $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestTrait();
+//            $class = $classReflection->getName();
         }
 
         $result = $this->getMockBuilder($class)
@@ -236,6 +238,8 @@ trait CommonAbstractionTrait
      */
     private function getClassProxyProvider(ReflectionClass $classReflection)
     {
-        return new ClassProxyProvider($classReflection);
+        throw new RuntimeException('TODO fix private mocking could not suite latest nikic/php-parser');
+
+//        return new ClassProxyProvider($classReflection);
     }
 }
