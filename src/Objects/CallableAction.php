@@ -39,7 +39,10 @@ class CallableAction
         $this->dispatchAction($paramArr);
     }
 
-    public function resultTrue()
+    /**
+     * @return bool
+     */
+    public function resultTrue(): ?bool
     {
         return true;
     }
@@ -75,9 +78,7 @@ class CallableAction
         $methodReflection = $classReflection->getMethod($this->execution[1]);
         $arguments = $methodReflection->getParameters();
 
-        $result = $this->getParamsArrayFromParameters($I, $arguments);
-
-        return $result;
+        return $this->getParamsArrayFromParameters($I, $arguments);
     }
 
     /**

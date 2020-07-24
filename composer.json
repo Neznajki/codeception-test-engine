@@ -21,22 +21,19 @@
     "require": {
         "php": ">=7.3",
         "ext-dom": "*",
-        "ext-zip": "*",
         "ext-mysqli": "*",
         "psr/simple-cache": "*",
         "codeception/aspect-mock": ">=3.0",
-        "codeception/codeception": ">=3.1",
-        "symfony/var-dumper": "*"
+        "codeception/codeception": ">=2.5",
+        "symfony/var-dumper": "*",
+        "phpunit/phpunit": "^8.5.2",
+        "codeception/module-asserts": "^1.1",
+        "nette/php-generator": "^3.3"
     },
     "require-dev": {
         "psr/container": "*",
         "symfony/event-dispatcher": ">=4.2",
-        "symfony/event-dispatcher-contracts": "*",
-        "symfony/framework-bundle": "^4.4",
-        "symfony/flex": "^1.4",
-        "doctrine/orm": "^2.5",
-        "doctrine/doctrine-bundle": "^1.6"
-
+        "symfony/event-dispatcher-contracts": "*"
     },
     "scripts": {
         "auto-scripts": {

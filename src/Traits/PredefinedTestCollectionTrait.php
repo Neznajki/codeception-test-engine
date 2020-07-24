@@ -29,6 +29,9 @@ trait PredefinedTestCollectionTrait
 
     /**
      * @param string $traitName
+     * @throws \PHPUnit\Framework\Exception
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     protected function checkTraitUsage(string $traitName)
     {
@@ -39,9 +42,12 @@ trait PredefinedTestCollectionTrait
 
     /**
      * @param string $functionName
-     * @param mixed ...$arguments
-     * @throws RuntimeException
+     * @param mixed  ...$arguments
      * @throws ReflectionException
+     * @throws RuntimeException
+     * @throws \PHPUnit\Framework\Exception
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     protected function runEmptyFunctionTest(string $functionName, ... $arguments)
     {
@@ -94,8 +100,10 @@ trait PredefinedTestCollectionTrait
 
     /**
      * @param string $parameterName
-     * @param $parameterValue
+     * @param        $parameterValue
      * @throws ReflectionException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     protected function executeGetterSetterTest(string $parameterName, $parameterValue)
     {
@@ -123,8 +131,10 @@ trait PredefinedTestCollectionTrait
 
     /**
      * @param string $parameterName
-     * @param $parameterValue
+     * @param        $parameterValue
      * @throws ReflectionException
+     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     protected function executeGetterTest(string $parameterName, $parameterValue)
     {

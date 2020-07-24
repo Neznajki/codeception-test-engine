@@ -10,6 +10,8 @@
 namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 use LogicException;
+use Nette\InvalidArgumentException;
+use PHPUnit\Framework\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\RuntimeException;
 use ReflectionClass;
@@ -58,24 +60,27 @@ trait CommonAbstractionTrait
      * @param mixed ...$mockedMethods
      * @return MockObject
      * @throws LogicException
-     * @throws RuntimeException
      * @throws ReflectionException
+     * @throws RuntimeException
+     * @throws InvalidArgumentException
+     * @throws Exception
+     * @throws \RuntimeException
      */
     protected function getWorkingClassPrivateMock(... $mockedMethods)
     {
-        throw new RuntimeException('TODO fix private mocking could not suite latest nikic/php-parser');
-//        $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestClass();
-//        $this->testClassName = $classReflection->getName();
-//
-//        return $this->getWorkingClass(... func_get_args());
+        $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestClass();
+        $this->testClassName = $classReflection->getName();
+
+        return $this->getWorkingClass(... func_get_args());
     }
 
     /**
      * @param array $mockedMethods
      * @return MockObject
      * @throws LogicException
-     * @throws RuntimeException
      * @throws ReflectionException
+     * @throws RuntimeException
+     * @throws Exception
      */
     protected function getWorkingClass(... $mockedMethods)
     {//TODO rework to object with primary method define (should error on any not defined method)
@@ -125,9 +130,8 @@ trait CommonAbstractionTrait
 
         $class = $classReflection->getName();
         if ($classReflection->isTrait()) {
-            throw new RuntimeException('TODO fix private mocking could not suite latest nikic/php-parser');
-//            $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestTrait();
-//            $class = $classReflection->getName();
+            $classReflection = $this->getClassProxyProvider($this->getClassData()->getClassReflection())->createTestTrait();
+            $class = $classReflection->getName();
         }
 
         $result = $this->getMockBuilder($class)
@@ -238,8 +242,6 @@ trait CommonAbstractionTrait
      */
     private function getClassProxyProvider(ReflectionClass $classReflection)
     {
-        throw new RuntimeException('TODO fix private mocking could not suite latest nikic/php-parser');
-
-//        return new ClassProxyProvider($classReflection);
+        return new ClassProxyProvider($classReflection);
     }
 }

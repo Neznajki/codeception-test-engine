@@ -5,7 +5,10 @@ namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 use PHPUnit\Framework\MockObject\MockBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\RuntimeException;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionException;
 use Tests\Neznajka\Codeception\Engine\Objects\FunctionalTestCase;
 
 /**
@@ -54,6 +57,7 @@ trait FunctionalTestMocking
      *
      * @return MockObject
      *
+     * @throws RuntimeException
      */
     protected function createMock($originalClassName)
     {
@@ -72,7 +76,7 @@ trait FunctionalTestMocking
      * @param array  $configuration
      *
      * @return MockObject
-     *
+     * @throws RuntimeException
      */
     protected function createConfiguredMock($originalClassName, array $configuration)
     {
@@ -93,16 +97,57 @@ trait FunctionalTestMocking
      *
      * @return MockObject
      *
+     * @throws ReflectionException
      */
     protected function createPartialMock($originalClassName, array $methods)
     {
-        return $this->getMockBuilder($originalClassName)
+        $existingMethods = [];
+        $magicMethods = [];
+        $notUsedMethods = [];
+
+        $reflection = new ReflectionClass($originalClassName);
+        foreach ($methods as $method) {
+            if ($reflection->hasMethod($method)) {
+                $existingMethods[] = $method;
+            } else {
+                $magicMethods[] = $method;
+            }
+        }
+
+        foreach ($reflection->getMethods() as $method) {
+            $methodName = $method->getName();
+            if ($method->getDeclaringClass()->getName() != $originalClassName) {
+                continue;
+            }
+
+            if (in_array($methodName, $methods)) {
+                continue;
+            }
+
+            $notUsedMethods[] = $methodName;
+            $existingMethods[] = $methodName;
+        }
+
+        $mockBuilder = $this->getMockBuilder($originalClassName)
             ->disableOriginalConstructor()
             ->disableOriginalClone()
             ->disableArgumentCloning()
-            ->disallowMockingUnknownTypes()
-            ->setMethods(empty($methods) ? null : $methods)
-            ->getMock();
+            ->disallowMockingUnknownTypes();
+
+        if (count($magicMethods)) {
+            $mockBuilder->addMethods($existingMethods);
+        }
+
+        if (count($existingMethods)) {
+            $mockBuilder->onlyMethods($existingMethods);
+        }
+
+        $result = $mockBuilder->getMock();
+        foreach ($notUsedMethods as $method) {
+            $result->expects($this->never())->method($method);
+        }
+
+        return $result;
     }
 
     /**
@@ -113,6 +158,7 @@ trait FunctionalTestMocking
      *
      * @return MockObject
      *
+     * @throws RuntimeException
      */
     protected function createTestProxy($originalClassName, array $constructorArguments = [])
     {

@@ -5,7 +5,6 @@ namespace Tests\Neznajka\Codeception\Engine\Service;
 
 use LogicException;
 use RuntimeException;
-use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Tests\Neznajka\Codeception\Engine\ValueObject\EventDispatcherProxyData;
@@ -62,7 +61,7 @@ class EventDispatcherProxyService implements EventDispatcherInterface, EventSubs
      *
      * @return array The event listeners for the specified event, or all event listeners by event name
      */
-    public function getListeners($eventName = null)
+    public function getListeners(string $eventName = null)
     {
         return [];
     }
@@ -74,15 +73,15 @@ class EventDispatcherProxyService implements EventDispatcherInterface, EventSubs
      * signature of the method. Implementations that are not bound by this BC constraint
      * MUST declare it explicitly, as allowed by PHP.
      *
+     * @param object      $event The event to pass to the event handlers/listeners
      * @param string|null $eventName The name of the event to dispatch. If not supplied,
      *                               the class of $event should be used instead.
      *
-     * @param Event $event The event to pass to the event handlers/listeners
-     * @return void The passed $event MUST be returned
+     * @return object The passed $event MUST be returned
      * @throws LogicException
      * @throws RuntimeException
      */
-    public function dispatch($eventName = '', $event = null)
+    public function dispatch(object $event, string $eventName = null): object
     {
         if ($this->checked) {
             throw new RuntimeException("you cant dispatch after checked");
@@ -102,6 +101,8 @@ class EventDispatcherProxyService implements EventDispatcherInterface, EventSubs
         $eventProxy = $this->eventQueueCollection[$eventName];
 
         $eventProxy->eventHit($event);
+
+        return $event;
     }
 
     /**
@@ -177,7 +178,7 @@ class EventDispatcherProxyService implements EventDispatcherInterface, EventSubs
      *
      * @return bool true if the specified event has any listeners, false otherwise
      */
-    public function hasListeners($eventName = null)
+    public function hasListeners(string $eventName = null)
     {
         return array_key_exists($eventName, $this->getEventQueueCollection());
     }

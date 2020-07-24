@@ -4,19 +4,16 @@ services:
     codeception-test-engine:
         hostname: codeception-test-engine
         container_name: codeception-test-engine
-        image: docker.pkg.github.com/neznajki/docker-php73/apache:latest
+        build:
+            ./.docker
         volumes:
             - .:/www/default:cached
-            - $HOME/.bashrc:$HOME/.bashrc:cached
-            - $HOME/.profile:$HOME/.profile:cached
             - $HOME/.composer:$HOME/.composer:cached
-            - $HOME/.cache/:$HOME/.cache:cached
             - /opt/phpstorm-coverage/:/opt/phpstorm-coverage/:cached
         ports:
-            - 80
-        dns:
-            - 8.8.8.8
-            - 10.252.252.252
+            - "8888:80"
+        expose:
+            - 8888
         environment:
             - VIRTUAL_HOST=codeception-test-engine.local
             - HTTPS_METHOD=noredirect

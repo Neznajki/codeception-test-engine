@@ -1,5 +1,4 @@
 <?php
-/** @noinspection PhpUnhandledExceptionInspection */
 declare(strict_types=1);
 
 namespace Tests\TestsEngine\functional\Traits;
@@ -8,7 +7,7 @@ use AspectMock\Test;
 use Exception;
 use FunctionalTester;
 use LogicException;
-use Tests\Neznajka\Codeception\Engine\Abstraction\AbstractFunctionalSymfonyCodeceptionTest;
+use Tests\Neznajka\Codeception\Engine\Abstraction\AbstractFunctionalCodeceptionTest;
 use Tests\Neznajka\Codeception\Engine\Objects\CallableAction;
 use Tests\Neznajka\Codeception\Engine\Objects\MysqlResultMock;
 use Tests\Neznajka\Codeception\Engine\Traits\QueryMatcherTrait;
@@ -17,7 +16,7 @@ use Tests\Neznajka\Codeception\Engine\Traits\QueryMatcherTrait;
  * Class QueryMatcherTraitCest
  * @package Tests\TestsEngine\functional\Traits
  */
-class QueryMatcherTraitCest extends AbstractFunctionalSymfonyCodeceptionTest
+class QueryMatcherTraitCest extends AbstractFunctionalCodeceptionTest
 {
     use QueryMatcherTrait {
         QueryMatcherTrait::_after as __after;

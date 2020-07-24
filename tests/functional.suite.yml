@@ -14,9 +14,8 @@ modules:
 
 extensions:
     enabled:
+        - Tests\Neznajka\Codeception\Engine\Extension\StaticUnitTestsExtension
         - Tests\Neznajka\Codeception\Engine\Extension\MethodDisableExtension
-
-bootstrap: bootstrap.php
 
 disabled_methods:
     - [ 'Tests\TestsEngine\Code\TestMockingMethod', 'meMocked' ]
@@ -26,7 +25,7 @@ aspect_mock:
     include_paths:
         - src
         - tests/src
-#        - vendor/gossi/php-code-generator/src/model
+        - vendor/nette/php-generator/src/PhpGenerator
         - vendor/codeception/aspect-mock/src/AspectMock
     temp_folder:
         "unit_tests"

@@ -4,15 +4,15 @@ declare(strict_types=1);
 namespace Tests\Neznajka\Codeception\Engine\Traits;
 
 
-use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Tests\Neznajka\Codeception\Engine\Implementations\TestContainer;
 use Tests\Neznajka\Codeception\Engine\Objects\CallableAction;
 use Tests\Neznajka\Codeception\Engine\Service\EventDispatcherProxyService;
 
 /**
  * Trait EventDispatchingTrait
  * @package Tests\Neznajka\Codeception\Engine\Traits
- * @method Container getContainer()
+ * @method TestContainer getContainer()
  */
 trait EventDispatchingTrait
 {

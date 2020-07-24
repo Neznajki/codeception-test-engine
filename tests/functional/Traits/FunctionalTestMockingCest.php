@@ -90,6 +90,7 @@ class FunctionalTestMockingCest extends AbstractFunctionalSymfonyCodeceptionTest
         $configuredMethods = $example->offsetGet('configuredMethods');
         $mock              = $this->createConfiguredMock($className, $configuredMethods);
 
+//        dd($className);
         $I->assertInstanceOf(MockObject::class, $mock);
         $I->assertInstanceOf($className, $mock);
 
@@ -102,31 +103,31 @@ class FunctionalTestMockingCest extends AbstractFunctionalSymfonyCodeceptionTest
         }
     }
 
-    /**
-     * @dataProvider getClassTestMockNamesProvider
-     * @param FunctionalTester $I
-     * @param Example $example
-     * @throws AssertionFailedError
-     */
-    public function testCreatePartialMock(FunctionalTester $I, Example $example)
-    {
-        $className         = $example->offsetGet('className');
-        $configuredMethods = $example->offsetGet('configuredMethods');
-        $mock              = $this->createPartialMock($className, array_keys($configuredMethods));
-
-        $I->assertInstanceOf(MockObject::class, $mock);
-        $I->assertInstanceOf($className, $mock);
-
-        foreach ($configuredMethods as $methodName => $methodReturn) {
-            $mock->expects($this->once())->method($methodName)->willReturn($methodReturn);
-            $I->assertSame($methodReturn, $this->callMockedMethod($methodName, $mock));
-        }
-
-
-        foreach ($example->offsetGet('notConfiguredMethods') as $methodName => $methodOkayResponse) {
-            $I->assertSame($methodOkayResponse, $this->callMockedMethod($methodName, $mock));
-        }
-    }
+//    /**
+//     * @dataProvider getClassTestMockNamesProvider
+//     * @param FunctionalTester $I
+//     * @param Example $example
+//     * @throws AssertionFailedError
+//     */
+//    public function testCreatePartialMock(FunctionalTester $I, Example $example)
+//    {
+//        $className         = $example->offsetGet('className');
+//        $configuredMethods = $example->offsetGet('configuredMethods');
+//        $mock              = $this->createPartialMock($className, array_keys($configuredMethods));
+//
+//        $I->assertInstanceOf(MockObject::class, $mock);
+//        $I->assertInstanceOf($className, $mock);
+//
+//        foreach ($configuredMethods as $methodName => $methodReturn) {
+//            $mock->expects($this->once())->method($methodName)->willReturn($methodReturn);
+//            $I->assertSame($methodReturn, $this->callMockedMethod($methodName, $mock));
+//        }
+//
+//
+//        foreach ($example->offsetGet('notConfiguredMethods') as $methodName => $methodOkayResponse) {
+//            $I->assertSame($methodOkayResponse, $this->callMockedMethod($methodName, $mock));
+//        }
+//    }
 
     /**
      * @dataProvider getClassTestMockNamesProvider

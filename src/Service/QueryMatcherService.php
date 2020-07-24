@@ -240,9 +240,8 @@ class QueryMatcherService
         }
 
         $updatePart = implode(', ', $updateValues);
-        $result     = "UPDATE `{$table}` SET {$updatePart} WHERE `id` = '{$id}'";
 
-        return $result;
+        return "UPDATE `{$table}` SET {$updatePart} WHERE `id` = '{$id}'";
     }
 
     /**
@@ -254,9 +253,8 @@ class QueryMatcherService
     protected function getSqlForRecordInsertOnDuplicateIgnore(string $table, array $functionValues): string
     {
         $insertDataPart = $this->getInsertDataPart($functionValues);
-        $result         = "INSERT INTO `{$table}` {$insertDataPart} ON DUPLICATE KEY UPDATE `id` = `id`";
 
-        return $result;
+        return "INSERT INTO `{$table}` {$insertDataPart} ON DUPLICATE KEY UPDATE `id` = `id`";
     }
 
     /**
@@ -268,9 +266,8 @@ class QueryMatcherService
     protected function getSqlForRecordInsertIgnore(string $table, array $functionValues): string
     {
         $insertDataPart = $this->getInsertDataPart($functionValues);
-        $result         = "INSERT IGNORE INTO {$table} {$insertDataPart}";
 
-        return $result;
+        return "INSERT IGNORE INTO {$table} {$insertDataPart}";
     }
 
     /**
@@ -314,9 +311,7 @@ class QueryMatcherService
         $valuePart = implode(', ', $updateValues);
         $fieldPart = implode(', ', $updateFields);
 
-        $insertDataPart = "({$fieldPart}) VALUES ({$valuePart})";
-
-        return $insertDataPart;
+        return "({$fieldPart}) VALUES ({$valuePart})";
     }
 
     /**

@@ -21,7 +21,7 @@ use Throwable;
 
 /**
  * Class StaticUnitTestsExtension
- * @package Tests\Neznajka\Codeception\Engine\Extension
+ * @package Tests\Neznajka\Codeception\EngineTest\Extension
  */
 class StaticUnitTestsExtension extends Extension
 {

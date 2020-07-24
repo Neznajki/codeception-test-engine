@@ -9,7 +9,6 @@
 
 namespace Tests\TestsEngine\unit\Useful;
 
-use LogicException;
 use PHPUnit\Framework\MockObject\MockObject;
 use Tests\Neznajka\Codeception\Engine\Abstraction\AbstractSimpleCodeceptionTest;
 use Tests\Neznajka\Codeception\Engine\Useful\ClassWithConstructor;
@@ -28,7 +27,7 @@ class ClassWithConstructorTest extends AbstractSimpleCodeceptionTest
         new $className(... $constructorArgs);
 
         //test repeat should have exception
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
         new $className(... $constructorArgs);
     }
 
@@ -60,7 +59,7 @@ class ClassWithConstructorTest extends AbstractSimpleCodeceptionTest
     {
         $this->wantToTestThisMethod();
         $workingClass = $this->getWorkingClass();
-        $this->expectException(LogicException::class);
+        $this->expectException(\LogicException::class);
 
         ClassWithConstructor::$mockObject = null;
         $posMock                          = $this->getInt();
